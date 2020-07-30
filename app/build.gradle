@@ -11,12 +11,13 @@ android {
     targetSdkVersion versions.compile_sdk
     versionCode 1
     versionName "1.0"
+
+    testInstrumentationRunnerArgument 'androidx.benchmark.profiling.mode', 'none'
   }
 
   sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
   }
-
 
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
@@ -25,6 +26,16 @@ android {
 
   kotlinOptions {
     jvmTarget = JavaVersion.VERSION_1_8
+  }
+
+  testBuildType = "release"
+
+  buildTypes {
+    release {
+      isDefault = true
+      minifyEnabled true
+      signingConfig signingConfigs.debug
+    }
   }
 }
 
@@ -35,5 +46,6 @@ dependencies {
   implementation "com.google.android.material:material:${versions.material}"
   implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
   implementation "com.jakewharton.timber:timber:${versions.timber}"
-  testImplementation "junit:junit:${versions.junit}"
+  androidTestImplementation "junit:junit:${versions.junit}"
+  androidTestImplementation "androidx.benchmark:benchmark-junit4:${versions.benchmark}"
 }

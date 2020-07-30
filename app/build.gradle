@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+  buildToolsVersion versions.android_build_tools
+  compileSdkVersion versions.compile_sdk
+
+  defaultConfig {
+    applicationId "codes.chrishorner.recyclerbenchmark"
+    minSdkVersion versions.min_sdk
+    targetSdkVersion versions.compile_sdk
+    versionCode 1
+    versionName "1.0"
+  }
+
+  sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+  }
+
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  kotlinOptions {
+    jvmTarget = JavaVersion.VERSION_1_8
+  }
+}
+
+dependencies {
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+  implementation "androidx.appcompat:appcompat:${versions.appcompat}"
+  implementation "androidx.core:core-ktx:${versions.androidx_core}"
+  implementation "com.google.android.material:material:${versions.material}"
+  implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
+  implementation "com.jakewharton.timber:timber:${versions.timber}"
+  testImplementation "junit:junit:${versions.junit}"
+}

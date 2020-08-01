@@ -22,6 +22,7 @@ android {
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
+    coreLibraryDesugaringEnabled true
   }
 
   kotlinOptions {
@@ -41,11 +42,15 @@ android {
 
 dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}"
   implementation "androidx.appcompat:appcompat:${versions.appcompat}"
   implementation "androidx.core:core-ktx:${versions.androidx_core}"
   implementation "com.google.android.material:material:${versions.material}"
   implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
   implementation "com.jakewharton.timber:timber:${versions.timber}"
+  implementation "com.squareup.moshi:moshi-kotlin:${versions.moshi}"
+  implementation "com.squareup.okio:okio:${versions.okio}"
+  coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:${versions.desugaring}"
   androidTestImplementation "junit:junit:${versions.junit}"
   androidTestImplementation "androidx.benchmark:benchmark-junit4:${versions.benchmark}"
 }

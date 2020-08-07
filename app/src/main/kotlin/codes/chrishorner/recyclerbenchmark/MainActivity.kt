@@ -3,6 +3,7 @@ package codes.chrishorner.recyclerbenchmark
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -25,6 +26,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     scope.launch {
       val people = getTestData(this@MainActivity)
       Timber.d("Number of people = ${people.size}")
+    }
+
+    with(findViewById<RecyclerView>(R.id.recycler)) {
+      updatePaddingWithInsets(left = true, top = true, right = true, bottom = true)
     }
   }
 

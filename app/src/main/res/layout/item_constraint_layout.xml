@@ -3,9 +3,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
     >
 
   <ImageView
@@ -13,9 +14,84 @@
       android:layout_width="56dp"
       android:layout_height="56dp"
       android:importantForAccessibility="no"
+      android:scaleType="center"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@drawable/ic_person"
+      />
+
+  <TextView
+      android:id="@+id/name"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:textAppearance="?textAppearanceHeadline6"
+      app:layout_constraintEnd_toStartOf="@id/dateOfBirth"
+      app:layout_constraintStart_toEndOf="@id/avatar"
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Jane Doe"
+      />
+
+  <TextView
+      android:id="@+id/email"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:textAppearance="?textAppearanceSubtitle2"
+      android:textColor="?android:textColorSecondary"
+      app:layout_constraintEnd_toStartOf="@id/dateOfBirth"
+      app:layout_constraintStart_toEndOf="@id/avatar"
+      app:layout_constraintTop_toBottomOf="@id/name"
+      tools:text="jane.doe@gmail.com"
+      />
+
+  <TextView
+      android:id="@+id/dateOfBirth"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginEnd="8dp"
+      android:textAllCaps="true"
+      android:textAppearance="?textAppearanceCaption"
+      app:layout_constraintBottom_toBottomOf="@id/email"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="@id/name"
+      tools:text="Jul 11"
+      />
+
+  <TextView
+      android:id="@+id/job"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="8dp"
+      android:textAppearance="?textAppearanceBody1"
+      app:layout_constraintStart_toEndOf="@id/avatar"
+      app:layout_constraintTop_toBottomOf="@id/email"
+      tools:text="Programmer"
+      />
+
+  <ImageView
+      android:id="@+id/separatorDot"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:importantForAccessibility="no"
+      app:layout_constraintBottom_toBottomOf="@id/job"
+      app:layout_constraintEnd_toStartOf="@id/city"
+      app:layout_constraintStart_toEndOf="@id/job"
+      app:layout_constraintTop_toTopOf="@id/job"
+      app:srcCompat="@drawable/ic_dot"
+      />
+
+  <TextView
+      android:id="@+id/city"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:textAppearance="?textAppearanceBody1"
+      android:textColor="?android:textColorSecondary"
+      app:layout_constraintBaseline_toBaselineOf="@id/job"
+      app:layout_constraintStart_toEndOf="@id/job"
+      tools:text="Tokyo"
       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

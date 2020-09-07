@@ -1,17 +1,20 @@
 package codes.chrishorner.recyclerbenchmark
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.MainScope
+import codes.chrishorner.recyclerbenchmark.PeopleAdapter.Mode
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-  private val scope = MainScope()
+  private val scope = CoroutineScope(Job() + Dispatchers.Main.immediate)
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -23,13 +26,16 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
         View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 
+    val adapter = PeopleAdapter()
+
+    val recycler: RecyclerView = findViewById(R.id.recycler)
+    recycler.updatePaddingWithInsets(left = true, top = true, right = true, bottom = true)
+    recycler.layoutManager = LinearLayoutManager(this)
+    recycler.adapter = adapter
+
     scope.launch {
       val people = getTestData(this@MainActivity)
-      Timber.d("Number of people = ${people.size}")
-    }
-
-    with(findViewById<RecyclerView>(R.id.recycler)) {
-      updatePaddingWithInsets(left = true, top = true, right = true, bottom = true)
+      adapter.display(people, Mode.CONSTRAINT_LAYOUT)
     }
   }
 

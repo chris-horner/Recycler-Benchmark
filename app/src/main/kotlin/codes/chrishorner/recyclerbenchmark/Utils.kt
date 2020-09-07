@@ -1,8 +1,11 @@
 package codes.chrishorner.recyclerbenchmark
 
 import android.graphics.Rect
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowInsets
+import androidx.annotation.LayoutRes
 import androidx.annotation.MainThread
 import androidx.core.view.updatePadding
 import timber.log.Timber
@@ -17,6 +20,10 @@ fun initTimber() {
     timberPlanted = true
   }
 }
+
+@Suppress("UNCHECKED_CAST")
+fun <T : View> ViewGroup.inflate(@LayoutRes layout: Int, attach: Boolean = false): T =
+    LayoutInflater.from(context).inflate(layout, this, attach) as T
 
 /**
  * Indicates that this view should update its own padding to match that of [WindowInsets].

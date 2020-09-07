@@ -24,12 +24,21 @@ data class Person(
     val job: String
 )
 
-@Suppress("BlockingMethodInNonBlockingContext") // Isn't this what Dispatchers.IO is for!?
-suspend fun getTestData(context: Context): List<Person> = withContext(Dispatchers.IO) {
-  val listType = Types.newParameterizedType(List::class.java, Person::class.java)
-  val adapter: JsonAdapter<List<Person>> = moshi.adapter(listType)
-  val source = context.resources.openRawResource(R.raw.people).source().buffer()
-  return@withContext adapter.fromJson(source)!!
+private var cache: List<Person> = emptyList()
+
+@Suppress("BlockingMethodInNonBlockingContext") // https://youtrack.jetbrains.com/issue/KT-39684
+suspend fun getTestData(context: Context): List<Person> {
+
+  if (cache.isNotEmpty()) return cache
+
+  return withContext(Dispatchers.IO) {
+    val listType = Types.newParameterizedType(List::class.java, Person::class.java)
+    val adapter: JsonAdapter<List<Person>> = moshi.adapter(listType)
+    val source = context.resources.openRawResource(R.raw.people).source().buffer()
+    val people = adapter.fromJson(source)!!
+    cache = people
+    return@withContext cache
+  }
 }
 
 private val moshi = Moshi.Builder()

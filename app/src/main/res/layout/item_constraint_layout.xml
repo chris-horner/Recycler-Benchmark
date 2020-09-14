@@ -93,7 +93,7 @@
 
   <TextView
       android:id="@+id/city"
-      android:layout_width="wrap_content"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginStart="16dp"
       android:ellipsize="end"
@@ -101,6 +101,7 @@
       android:textAppearance="?textAppearanceBody2"
       android:textColor="?android:textColorSecondary"
       app:layout_constraintBaseline_toBaselineOf="@id/job"
+      app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@id/job"
       tools:text="Tokyo"
       />

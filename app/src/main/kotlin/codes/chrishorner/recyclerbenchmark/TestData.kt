@@ -17,6 +17,7 @@ data class Person(
     val id: Long,
     val firstName: String,
     val lastName: String,
+    val fullName: String,
     val email: String,
     val avatar: String,
     val dateOfBirth: LocalDate,

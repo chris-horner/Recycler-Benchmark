@@ -3,4 +3,5 @@
 <resources>
   <string name="appName">Recycler Benchmark</string>
   <string name="nameTemplate">%1$s %2$s</string>
+  <string name="layoutType">Layout type</string>
 </resources>

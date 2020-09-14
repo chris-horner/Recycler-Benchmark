@@ -3,6 +3,7 @@
 <resources>
   <color name="dark_green">#33691e</color>
   <color name="pale_green">#e8f5e9</color>
+  <color name="light_green">#9ccc65</color>
   <color name="scrim_light">#2233691e</color>
   <color name="scrim_dark">#aa000000</color>
 </resources>

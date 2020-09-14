@@ -11,10 +11,6 @@ class PeopleAdapter : RecyclerView.Adapter<ViewHolder>() {
 
   private var people: List<Person> = emptyList()
 
-  enum class Mode {
-    NESTED_LAYOUTS, CONSTRAINT_LAYOUT, CUSTOM_VIEWGROUP
-  }
-
   fun display(people: List<Person>, mode: Mode) {
     this.people = people
     notifyDataSetChanged()

@@ -11,6 +11,8 @@
     <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
     <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
     <item name="android:colorBackground">@color/pale_green</item>
+    <item name="colorPrimary">@color/light_green</item>
+    <item name="colorOnPrimary">@android:color/black</item>
   </style>
 
 </resources>

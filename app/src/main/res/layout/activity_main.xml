@@ -11,32 +11,52 @@
       android:id="@+id/toolbar"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:paddingTop="8dp"
       style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
       >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:minHeight="?actionBarSize"
-        android:orientation="vertical"
+        android:columnCount="4"
         >
 
       <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
           android:text="@string/layoutType"
-          android:textAppearance="?textAppearanceOverline"
+          android:textAppearance="?textAppearanceSubtitle2"
           />
 
       <Spinner
           android:id="@+id/modeSelector"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
+          android:layout_width="0dp"
+          android:layout_marginStart="8dp"
+          android:layout_columnSpan="3"
+          android:layout_gravity="fill_horizontal"
           android:minHeight="48dp"
           />
 
-    </LinearLayout>
+      <TextView
+          android:text="@string/preformatNames"
+          android:textAppearance="?textAppearanceSubtitle2"
+          />
+
+      <com.google.android.material.switchmaterial.SwitchMaterial
+          android:id="@+id/preformatNames"
+          android:layout_marginStart="8dp"
+          />
+
+      <TextView
+          android:layout_marginStart="8dp"
+          android:text="@string/preformatDates"
+          android:textAppearance="?textAppearanceSubtitle2"
+          />
+
+      <com.google.android.material.switchmaterial.SwitchMaterial
+          android:id="@+id/preformatDates"
+          android:layout_marginStart="8dp"
+          />
+
+    </GridLayout>
 
   </com.google.android.material.appbar.MaterialToolbar>
 

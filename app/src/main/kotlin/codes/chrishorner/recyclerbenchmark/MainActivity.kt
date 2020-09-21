@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     scope.launch {
       val people = getTestData(this@MainActivity)
-      adapter.display(people, Mode.values()[spinner.selectedItemPosition])
+      adapter.display(people, Mode.values()[spinner.selectedItemPosition], false, false)
     }
   }
 

@@ -5,6 +5,8 @@
   <style name="Base.Theme.RecyclerBenchmark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     <item name="android:statusBarColor">@color/system_status_bar</item>
     <item name="android:navigationBarColor">@color/system_navigation_bar</item>
+    <item name="colorSecondary">@color/light_orange</item>
+    <item name="colorSecondaryVariant">@color/dark_orange</item>
   </style>
 
   <style name="Theme.RecyclerBenchmark" parent="Base.Theme.RecyclerBenchmark">

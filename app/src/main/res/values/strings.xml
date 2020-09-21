@@ -4,4 +4,6 @@
   <string name="appName">Recycler Benchmark</string>
   <string name="nameTemplate">%1$s %2$s</string>
   <string name="layoutType">Layout type</string>
+  <string name="preformatNames">Preformat names</string>
+  <string name="preformatDates">Preformat dates</string>
 </resources>

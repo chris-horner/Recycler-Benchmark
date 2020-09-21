@@ -9,10 +9,17 @@ import java.time.format.DateTimeFormatter
 
 class PeopleAdapter : RecyclerView.Adapter<ViewHolder>() {
 
+  private val dateFormat = DateTimeFormatter.ofPattern("MMM dd")
   private var people: List<Person> = emptyList()
+  private var preformattedDates: List<String> = emptyList()
+  private var preformatDates: Boolean = false
+  private var preformatNames: Boolean = false
 
-  fun display(people: List<Person>, mode: Mode) {
+  fun display(people: List<Person>, mode: Mode, preformatDates: Boolean, preformatNames: Boolean) {
     this.people = people
+    this.preformatDates = preformatDates
+    this.preformatNames = preformatNames
+    preformattedDates = people.map { dateFormat.format(it.dateOfBirth) }
     notifyDataSetChanged()
   }
 
@@ -29,7 +36,7 @@ class PeopleAdapter : RecyclerView.Adapter<ViewHolder>() {
     }
   }
 
-  class PersonViewHolder(view: View) : ViewHolder(view) {
+  inner class PersonViewHolder(view: View) : ViewHolder(view) {
 
     private val resources = view.context.resources
     private val nameView: TextView = view.findViewById(R.id.name)
@@ -43,7 +50,7 @@ class PeopleAdapter : RecyclerView.Adapter<ViewHolder>() {
       emailView.text = person.email
       jobView.text = person.job
       cityView.text = person.city
-      dobView.text = DateTimeFormatter.ofPattern("MMM dd").format(person.dateOfBirth)
+      dobView.text = dateFormat.format(person.dateOfBirth)
     }
   }
 }

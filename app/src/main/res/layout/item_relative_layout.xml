@@ -81,11 +81,11 @@
       android:id="@+id/separatorDot"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="6dp"
       android:layout_alignBottom="@id/job"
       android:layout_alignTop="@id/job"
       android:layout_toEndOf="@id/job"
       android:importantForAccessibility="no"
+      android:paddingHorizontal="6dp"
       app:srcCompat="@drawable/ic_dot"
       />
 
@@ -93,7 +93,6 @@
       android:id="@+id/city"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="6dp"
       android:layout_alignBaseline="@id/job"
       android:layout_toEndOf="@id/separatorDot"
       android:ellipsize="end"

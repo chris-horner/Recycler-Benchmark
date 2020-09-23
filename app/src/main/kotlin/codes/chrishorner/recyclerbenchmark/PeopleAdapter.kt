@@ -46,7 +46,7 @@ class PeopleAdapter : RecyclerView.Adapter<ViewHolder>() {
     CONSTRAINT_LAYOUT -> R.layout.item_constraint_layout
     RELATIVE_LAYOUT -> R.layout.item_relative_layout
     NESTED_LINEARS -> R.layout.item_nested_linears
-    CUSTOM_VIEWGROUP -> TODO()
+    CUSTOM_VIEWGROUP -> R.layout.item_custom_layout
   }
 
   override fun getItemCount() = people.size

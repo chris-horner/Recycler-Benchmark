@@ -97,3 +97,7 @@ inline fun Spinner.onItemSelected(crossinline action: (position: Int) -> Unit) {
     }
   }
 }
+
+fun View.dpToPx(dp: Int): Int = dpToPx(dp.toFloat()).toInt()
+
+fun View.dpToPx(dp: Float): Float = dp * resources.displayMetrics.density

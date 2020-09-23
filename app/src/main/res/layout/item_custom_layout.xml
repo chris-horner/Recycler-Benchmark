@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<codes.chrishorner.recyclerbenchmark.PersonLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    >
+
+  <ImageView
+      android:id="@+id/avatar"
+      android:layout_width="56dp"
+      android:layout_height="56dp"
+      android:importantForAccessibility="no"
+      android:scaleType="center"
+      app:srcCompat="@drawable/ic_person"
+      />
+
+  <TextView
+      android:id="@+id/name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_toEndOf="@id/avatar"
+      android:layout_toStartOf="@id/dateOfBirth"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:textAppearance="?textAppearanceHeadline6"
+      tools:text="Jane Doe"
+      />
+
+  <TextView
+      android:id="@+id/email"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:textAppearance="?textAppearanceSubtitle2"
+      android:textColor="?android:textColorSecondary"
+      tools:text="jane.doe@gmail.com"
+      />
+
+  <TextView
+      android:id="@+id/dateOfBirth"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:paddingEnd="8dp"
+      android:gravity="center_vertical"
+      android:maxLines="1"
+      android:textAllCaps="true"
+      android:textAppearance="?textAppearanceCaption"
+      tools:ignore="RtlSymmetry"
+      tools:text="Jul 11"
+      />
+
+  <TextView
+      android:id="@+id/job"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:textAppearance="?textAppearanceBody2"
+      tools:text="Programmer"
+      />
+
+  <ImageView
+      android:id="@+id/separatorDot"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:importantForAccessibility="no"
+      android:paddingHorizontal="6dp"
+      app:srcCompat="@drawable/ic_dot"
+      />
+
+  <TextView
+      android:id="@+id/city"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:textAppearance="?textAppearanceBody2"
+      android:textColor="?android:textColorSecondary"
+      tools:text="Tokyo"
+      />
+
+</codes.chrishorner.recyclerbenchmark.PersonLayout>

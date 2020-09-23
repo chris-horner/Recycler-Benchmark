@@ -5,22 +5,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.Spinner
 import androidx.annotation.LayoutRes
 import androidx.annotation.MainThread
 import androidx.core.view.updatePadding
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
+// This file contains a collection of odds and ends that make this little sample app easier to read.
+
 private var timberPlanted = false
 
-@MainThread
-fun initTimber() {
+/**
+ * Plant a [DebugTree] if it hasn't been already.
+ */
+@MainThread fun initTimber() {
   if (!timberPlanted) {
     Timber.plant(DebugTree())
     timberPlanted = true
   }
 }
 
+/**
+ * Nicer version of [LayoutInflater.inflate].
+ */
 @Suppress("UNCHECKED_CAST")
 fun <T : View> ViewGroup.inflate(@LayoutRes layout: Int, attach: Boolean = false): T =
     LayoutInflater.from(context).inflate(layout, this, attach) as T
@@ -70,5 +80,20 @@ inline fun View.doOnApplyWindowInsets(crossinline block: (insets: WindowInsets) 
 
       override fun onViewDetachedFromWindow(v: View) = Unit
     })
+  }
+}
+
+/**
+ * Nicer version of [Spinner.setOnItemSelectedListener].
+ */
+inline fun Spinner.onItemSelected(crossinline action: (position: Int) -> Unit) {
+
+  onItemSelectedListener = object : OnItemSelectedListener {
+
+    override fun onNothingSelected(parent: AdapterView<*>?) = Unit
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+      action(position)
+    }
   }
 }

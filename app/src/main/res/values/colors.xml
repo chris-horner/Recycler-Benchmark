@@ -2,7 +2,7 @@
 
 <resources>
   <color name="dark_green">#33691e</color>
-  <color name="pale_green">#e8f5e9</color>
+  <color name="pale_green">#f2faf2</color>
   <color name="light_green">#9ccc65</color>
   <color name="light_orange">#ffab40</color>
   <color name="dark_orange">#c77c02</color>

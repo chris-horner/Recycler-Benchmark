@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,40 +15,7 @@
       android:layout_height="56dp"
       android:importantForAccessibility="no"
       android:scaleType="center"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
       app:srcCompat="@drawable/ic_person"
-      />
-
-  <TextView
-      android:id="@+id/name"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="16dp"
-      android:layout_marginEnd="16dp"
-      android:ellipsize="end"
-      android:maxLines="1"
-      android:textAppearance="?textAppearanceHeadline6"
-      app:layout_constraintEnd_toStartOf="@id/dateOfBirth"
-      app:layout_constraintStart_toEndOf="@id/avatar"
-      app:layout_constraintTop_toTopOf="parent"
-      tools:text="Jane Doe"
-      />
-
-  <TextView
-      android:id="@+id/email"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="16dp"
-      android:layout_marginEnd="16dp"
-      android:ellipsize="end"
-      android:maxLines="1"
-      android:textAppearance="?textAppearanceSubtitle2"
-      android:textColor="?android:textColorSecondary"
-      app:layout_constraintEnd_toStartOf="@id/dateOfBirth"
-      app:layout_constraintStart_toEndOf="@id/avatar"
-      app:layout_constraintTop_toBottomOf="@id/name"
-      tools:text="jane.doe@gmail.com"
       />
 
   <TextView
@@ -56,13 +23,44 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginEnd="8dp"
+      android:layout_alignBottom="@id/email"
+      android:layout_alignParentEnd="true"
+      android:layout_alignTop="@id/name"
+      android:gravity="center_vertical"
       android:maxLines="1"
       android:textAllCaps="true"
       android:textAppearance="?textAppearanceCaption"
-      app:layout_constraintBottom_toBottomOf="@id/email"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="@id/name"
       tools:text="Jul 11"
+      />
+
+  <TextView
+      android:id="@+id/name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_toEndOf="@id/avatar"
+      android:layout_toStartOf="@id/dateOfBirth"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:textAppearance="?textAppearanceHeadline6"
+      tools:text="Jane Doe"
+      />
+
+  <TextView
+      android:id="@+id/email"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_below="@id/name"
+      android:layout_toEndOf="@id/avatar"
+      android:layout_toStartOf="@id/dateOfBirth"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:textAppearance="?textAppearanceSubtitle2"
+      android:textColor="?android:textColorSecondary"
+      tools:text="jane.doe@gmail.com"
       />
 
   <TextView
@@ -71,11 +69,11 @@
       android:layout_height="wrap_content"
       android:layout_marginStart="16dp"
       android:layout_marginTop="8dp"
+      android:layout_below="@id/email"
+      android:layout_toEndOf="@id/avatar"
       android:ellipsize="end"
       android:maxLines="1"
       android:textAppearance="?textAppearanceBody2"
-      app:layout_constraintStart_toEndOf="@id/avatar"
-      app:layout_constraintTop_toBottomOf="@id/email"
       tools:text="Programmer"
       />
 
@@ -83,29 +81,26 @@
       android:id="@+id/separatorDot"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:importantForAccessibility="no"
       android:layout_marginStart="4dp"
-      android:layout_marginEnd="4dp"
-      app:layout_constraintBottom_toBottomOf="@id/job"
-      app:layout_constraintEnd_toStartOf="@id/city"
-      app:layout_constraintStart_toEndOf="@id/job"
-      app:layout_constraintTop_toTopOf="@id/job"
+      android:layout_alignBottom="@id/job"
+      android:layout_alignTop="@id/job"
+      android:layout_toEndOf="@id/job"
+      android:importantForAccessibility="no"
       app:srcCompat="@drawable/ic_dot"
       />
 
   <TextView
       android:id="@+id/city"
-      android:layout_width="0dp"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="16dp"
+      android:layout_marginStart="4dp"
+      android:layout_alignBaseline="@id/job"
+      android:layout_toEndOf="@id/separatorDot"
       android:ellipsize="end"
       android:maxLines="1"
       android:textAppearance="?textAppearanceBody2"
       android:textColor="?android:textColorSecondary"
-      app:layout_constraintBaseline_toBaselineOf="@id/job"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toEndOf="@id/job"
       tools:text="Tokyo"
       />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

@@ -3,6 +3,7 @@ package codes.chrishorner.recyclerbenchmark
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.CompoundButton
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,21 +31,23 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     val toolbar: View = findViewById(R.id.toolbar)
     toolbar.updatePaddingWithInsets(left = true, top = true, right = true)
 
-    val spinner: Spinner = findViewById(R.id.modeSelector)
-    spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Mode.values()).apply {
-      setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-    }
-
     val adapter = PeopleAdapter()
     val recycler: RecyclerView = findViewById(R.id.recycler)
     recycler.updatePaddingWithInsets(left = true, right = true, bottom = true)
     recycler.layoutManager = LinearLayoutManager(this)
     recycler.adapter = adapter
+    scope.launch { adapter.people = getTestData(this@MainActivity) }
 
-    scope.launch {
-      val people = getTestData(this@MainActivity)
-      adapter.display(people, Mode.values()[spinner.selectedItemPosition], false, false)
+    val spinner: Spinner = findViewById(R.id.modeSelector)
+    spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Mode.values()).apply {
+      setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
     }
+    spinner.onItemSelected { position -> adapter.mode = Mode.values()[position] }
+
+    val preformatNames: CompoundButton = findViewById(R.id.preformatNames)
+    preformatNames.setOnCheckedChangeListener { _, isChecked -> adapter.preformatNames = isChecked }
+    val preformatDates: CompoundButton = findViewById(R.id.preformatDates)
+    preformatDates.setOnCheckedChangeListener { _, isChecked -> adapter.preformatDates = isChecked }
   }
 
   override fun onDestroy() {

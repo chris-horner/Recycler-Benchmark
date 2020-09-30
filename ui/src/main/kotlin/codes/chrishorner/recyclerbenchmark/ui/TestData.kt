@@ -1,14 +1,13 @@
 package codes.chrishorner.recyclerbenchmark.ui
 
 import android.content.Context
+import androidx.annotation.MainThread
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.ToJson
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import okio.buffer
 import okio.source
 import java.time.LocalDate
@@ -27,19 +26,21 @@ data class Person(
 
 private var cache: List<Person> = emptyList()
 
-@Suppress("BlockingMethodInNonBlockingContext") // https://youtrack.jetbrains.com/issue/KT-39684
-suspend fun getTestData(context: Context): List<Person> {
+/**
+ * Returns what's in an in memory cache, or synchronously reads, caches, and returns
+ * test data. (Keeps things simple for the sake of benchmarking).
+ */
+@MainThread
+fun getTestData(context: Context): List<Person> {
 
   if (cache.isNotEmpty()) return cache
 
-  return withContext(Dispatchers.IO) {
-    val listType = Types.newParameterizedType(List::class.java, Person::class.java)
-    val adapter: JsonAdapter<List<Person>> = moshi.adapter(listType)
-    val source = context.resources.openRawResource(R.raw.people).source().buffer()
-    val people = adapter.fromJson(source)!!
-    cache = people
-    return@withContext cache
-  }
+  val listType = Types.newParameterizedType(List::class.java, Person::class.java)
+  val adapter: JsonAdapter<List<Person>> = moshi.adapter(listType)
+  val source = context.resources.openRawResource(R.raw.people).source().buffer()
+  val people = adapter.fromJson(source)!!
+  cache = people
+  return cache
 }
 
 private val moshi = Moshi.Builder()

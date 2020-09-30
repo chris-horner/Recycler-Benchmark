@@ -8,15 +8,8 @@ import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
-
-  private val scope = CoroutineScope(Job() + Dispatchers.Main.immediate)
 
   lateinit var recycler: RecyclerView
 
@@ -38,7 +31,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     recycler.updatePaddingWithInsets(left = true, right = true, bottom = true)
     recycler.layoutManager = LinearLayoutManager(this)
     recycler.adapter = adapter
-    scope.launch { adapter.people = getTestData(this@MainActivity) }
+    adapter.people = getTestData(this@MainActivity)
 
     val spinner: Spinner = findViewById(R.id.modeSelector)
     spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Mode.values()).apply {
@@ -50,10 +43,5 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     preformatNames.setOnCheckedChangeListener { _, isChecked -> adapter.preformatNames = isChecked }
     val preformatDates: CompoundButton = findViewById(R.id.preformatDates)
     preformatDates.setOnCheckedChangeListener { _, isChecked -> adapter.preformatDates = isChecked }
-  }
-
-  override fun onDestroy() {
-    super.onDestroy()
-    scope.cancel()
   }
 }

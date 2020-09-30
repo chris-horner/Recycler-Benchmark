@@ -1,4 +1,4 @@
-package codes.chrishorner.recyclerbenchmark
+package codes.chrishorner.recyclerbenchmark.ui
 
 import android.os.Bundle
 import android.view.View
@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
   private val scope = CoroutineScope(Job() + Dispatchers.Main.immediate)
 
+  lateinit var recycler: RecyclerView
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     initTimber()
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     toolbar.updatePaddingWithInsets(left = true, top = true, right = true)
 
     val adapter = PeopleAdapter()
-    val recycler: RecyclerView = findViewById(R.id.recycler)
+    recycler = findViewById(R.id.recycler)
     recycler.updatePaddingWithInsets(left = true, right = true, bottom = true)
     recycler.layoutManager = LinearLayoutManager(this)
     recycler.adapter = adapter

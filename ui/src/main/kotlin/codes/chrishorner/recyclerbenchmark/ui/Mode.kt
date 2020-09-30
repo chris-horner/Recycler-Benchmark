@@ -1,4 +1,4 @@
-package codes.chrishorner.recyclerbenchmark
+package codes.chrishorner.recyclerbenchmark.ui
 
 enum class Mode(private val label: String) {
   CONSTRAINT_LAYOUT("ConstraintLayout"),

@@ -1,4 +1,4 @@
-package codes.chrishorner.recyclerbenchmark
+package codes.chrishorner.recyclerbenchmark.ui
 
 import android.content.Context
 import android.util.AttributeSet

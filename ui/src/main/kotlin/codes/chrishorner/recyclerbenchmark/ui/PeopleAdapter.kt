@@ -1,14 +1,14 @@
-package codes.chrishorner.recyclerbenchmark
+package codes.chrishorner.recyclerbenchmark.ui
 
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import codes.chrishorner.recyclerbenchmark.Mode.CONSTRAINT_LAYOUT
-import codes.chrishorner.recyclerbenchmark.Mode.CUSTOM_VIEWGROUP
-import codes.chrishorner.recyclerbenchmark.Mode.NESTED_LINEARS
-import codes.chrishorner.recyclerbenchmark.Mode.RELATIVE_LAYOUT
-import codes.chrishorner.recyclerbenchmark.PeopleAdapter.ViewHolder
+import codes.chrishorner.recyclerbenchmark.ui.Mode.CONSTRAINT_LAYOUT
+import codes.chrishorner.recyclerbenchmark.ui.Mode.CUSTOM_VIEWGROUP
+import codes.chrishorner.recyclerbenchmark.ui.Mode.NESTED_LINEARS
+import codes.chrishorner.recyclerbenchmark.ui.Mode.RELATIVE_LAYOUT
+import codes.chrishorner.recyclerbenchmark.ui.PeopleAdapter.ViewHolder
 import java.time.format.DateTimeFormatter
 
 class PeopleAdapter : RecyclerView.Adapter<ViewHolder>() {

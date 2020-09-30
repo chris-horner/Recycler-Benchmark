@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-  <string name="appName">Recycler Benchmark</string>
+  <string name="appName">Recycler App</string>
   <string name="nameTemplate">%1$s %2$s</string>
   <string name="layoutType">Layout type</string>
   <string name="preformatNames">Preformat names</string>

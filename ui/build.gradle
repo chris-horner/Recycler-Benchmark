@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+  buildToolsVersion versions.android_build_tools
+  compileSdkVersion versions.compile_sdk
+
+  defaultConfig {
+    minSdkVersion versions.min_sdk
+    targetSdkVersion versions.compile_sdk
+  }
+
+  sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+    coreLibraryDesugaringEnabled true
+  }
+
+  kotlinOptions {
+    jvmTarget = JavaVersion.VERSION_1_8
+  }
+}
+
+dependencies {
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}"
+  implementation "androidx.appcompat:appcompat:${versions.appcompat}"
+  implementation "androidx.core:core-ktx:${versions.androidx_core}"
+  implementation "androidx.recyclerview:recyclerview:${versions.recyclerview}"
+  implementation "com.google.android.material:material:${versions.material}"
+  implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
+  implementation "com.jakewharton.timber:timber:${versions.timber}"
+  implementation "com.squareup.moshi:moshi-kotlin:${versions.moshi}"
+  implementation "com.squareup.okio:okio:${versions.okio}"
+  coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:${versions.desugaring}"
+}
+

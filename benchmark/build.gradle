@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'androidx.benchmark'
+
+android {
+  buildToolsVersion versions.android_build_tools
+  compileSdkVersion versions.compile_sdk
+
+  defaultConfig {
+    minSdkVersion versions.min_sdk
+    targetSdkVersion versions.compile_sdk
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunnerArgument 'androidx.benchmark.profiling.mode', 'none'
+  }
+
+  sourceSets {
+    androidTest.java.srcDirs += 'src/androidTest/kotlin'
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  kotlinOptions {
+    jvmTarget = JavaVersion.VERSION_1_8
+  }
+
+  testBuildType = 'release'
+
+  buildTypes {
+    release {
+      isDefault = true
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'benchmark-proguard-rules.pro'
+      signingConfig signingConfigs.debug
+    }
+  }
+}
+
+dependencies {
+  androidTestImplementation project(":ui")
+  androidTestImplementation "androidx.appcompat:appcompat:${versions.appcompat}"
+  androidTestImplementation "androidx.recyclerview:recyclerview:${versions.recyclerview}"
+  androidTestImplementation "androidx.benchmark:benchmark-junit4:${versions.benchmark}"
+  androidTestImplementation "androidx.test:runner:${versions.androidx_test}"
+  androidTestImplementation "androidx.test.ext:junit:${versions.androidx_junit}"
+}

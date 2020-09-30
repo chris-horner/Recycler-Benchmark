@@ -2,20 +2,23 @@
 
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="codes.chrishorner.recyclerbenchmark"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="codes.chrishorner.recyclerbenchmark.test"
     >
 
+  <!-- Debugging disabled for accurate performance results. -->
   <application
       android:allowBackup="false"
+      android:debuggable="false"
       android:fullBackupContent="false"
       android:icon="@mipmap/ic_launcher"
-      android:label="@string/appName"
+      android:label="@string/benchmark_appName"
       android:roundIcon="@mipmap/ic_launcher_round"
-      android:supportsRtl="false"
       android:theme="@style/Theme.RecyclerBenchmark"
+      tools:replace="android:debuggable"
       >
 
-    <activity android:name=".ui.MainActivity">
+    <activity android:name="codes.chrishorner.recyclerbenchmark.ui.MainActivity">
 
       <intent-filter>
 

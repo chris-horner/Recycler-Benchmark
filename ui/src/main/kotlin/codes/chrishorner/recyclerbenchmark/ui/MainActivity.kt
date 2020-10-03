@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
   lateinit var recycler: RecyclerView
+  lateinit var typeSpinner: Spinner
+  lateinit var preformatNamesSwitch: CompoundButton
+  lateinit var preformatDatesSwitch: CompoundButton
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -33,15 +36,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     recycler.adapter = adapter
     adapter.people = getTestData(this@MainActivity)
 
-    val spinner: Spinner = findViewById(R.id.modeSelector)
-    spinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Mode.values()).apply {
+    typeSpinner = findViewById(R.id.modeSelector)
+    typeSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, Mode.values()).apply {
       setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
     }
-    spinner.onItemSelected { position -> adapter.mode = Mode.values()[position] }
+    typeSpinner.onItemSelected { position -> adapter.mode = Mode.values()[position] }
 
-    val preformatNames: CompoundButton = findViewById(R.id.preformatNames)
-    preformatNames.setOnCheckedChangeListener { _, isChecked -> adapter.preformatNames = isChecked }
-    val preformatDates: CompoundButton = findViewById(R.id.preformatDates)
-    preformatDates.setOnCheckedChangeListener { _, isChecked -> adapter.preformatDates = isChecked }
+    preformatNamesSwitch = findViewById(R.id.preformatNames)
+    preformatNamesSwitch.setOnCheckedChangeListener { _, isChecked -> adapter.preformatNames = isChecked }
+    preformatDatesSwitch = findViewById(R.id.preformatDates)
+    preformatDatesSwitch.setOnCheckedChangeListener { _, isChecked -> adapter.preformatDates = isChecked }
   }
 }

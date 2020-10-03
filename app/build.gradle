@@ -25,6 +25,15 @@ android {
   kotlinOptions {
     jvmTarget = JavaVersion.VERSION_1_8
   }
+
+  buildTypes {
+    release {
+      isDefault = true
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+      signingConfig signingConfigs.debug
+    }
+  }
 }
 
 dependencies {

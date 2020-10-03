@@ -9,7 +9,7 @@ android {
   defaultConfig {
     minSdkVersion versions.min_sdk
     targetSdkVersion versions.compile_sdk
-    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner 'androidx.benchmark.junit4.AndroidBenchmarkRunner'
     testInstrumentationRunnerArgument 'androidx.benchmark.profiling.mode', 'none'
   }
 

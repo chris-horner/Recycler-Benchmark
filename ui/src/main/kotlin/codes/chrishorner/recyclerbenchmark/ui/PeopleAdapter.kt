@@ -9,7 +9,7 @@ import codes.chrishorner.recyclerbenchmark.ui.Mode.CUSTOM_VIEWGROUP
 import codes.chrishorner.recyclerbenchmark.ui.Mode.NESTED_LINEARS
 import codes.chrishorner.recyclerbenchmark.ui.Mode.RELATIVE_LAYOUT
 import codes.chrishorner.recyclerbenchmark.ui.PeopleAdapter.ViewHolder
-import java.time.format.DateTimeFormatter
+import org.threeten.bp.format.DateTimeFormatter
 
 class PeopleAdapter : RecyclerView.Adapter<ViewHolder>() {
 

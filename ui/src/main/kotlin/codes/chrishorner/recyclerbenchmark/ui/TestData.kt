@@ -10,7 +10,7 @@ import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okio.buffer
 import okio.source
-import java.time.LocalDate
+import org.threeten.bp.LocalDate
 
 data class Person(
     val id: Long,

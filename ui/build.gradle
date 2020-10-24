@@ -17,7 +17,6 @@ android {
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
-    coreLibraryDesugaringEnabled true
   }
 
   kotlinOptions {
@@ -35,6 +34,6 @@ dependencies {
   implementation "com.jakewharton.timber:timber:${versions.timber}"
   implementation "com.squareup.moshi:moshi-kotlin:${versions.moshi}"
   implementation "com.squareup.okio:okio:${versions.okio}"
-  coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:${versions.desugaring}"
+  implementation "com.jakewharton.threetenabp:threetenabp:${versions.threetenabp}"
 }
 

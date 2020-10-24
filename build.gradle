@@ -10,10 +10,10 @@ buildscript {
                   'androidx_core'        : '1.3.2',
                   'constraintlayout'     : '2.0.2',
                   'benchmark'            : '1.0.0',
-                  'desugaring'           : '1.0.10',
                   'timber'               : '4.7.1',
                   'moshi'                : '1.10.0',
                   'okio'                 : '2.8.0',
+                  'threetenabp'          : '1.2.4',
                   'junit'                : '4.13',
                   'androidx_junit'       : '1.1.2',
                   'androidx_test'        : '1.3.0']

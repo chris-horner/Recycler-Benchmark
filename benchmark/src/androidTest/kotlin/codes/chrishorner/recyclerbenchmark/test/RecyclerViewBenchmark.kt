@@ -10,6 +10,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import codes.chrishorner.recyclerbenchmark.ui.MainActivity
 import codes.chrishorner.recyclerbenchmark.ui.Mode
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -46,6 +47,8 @@ class RecyclerViewBenchmark {
       preformatNamesSwitch.isChecked = false
       preformatDatesSwitch.isChecked = false
       Thread.sleep(100)
+      assertTrue(recyclerView.childCount > 0)
+      assertTrue(recyclerView.height > 0)
     }
   }
 
@@ -55,8 +58,6 @@ class RecyclerViewBenchmark {
     } else if (!scrollDown && !recyclerView.canScrollVertically(-1)) {
       scrollDown = true
     }
-
-    println("Scrolling! $scrollDown")
 
     val itemHeight = recyclerView.getChildAt(recyclerView.childCount - 1).height
 
